@@ -1,3 +1,5 @@
+//------------------------------------C L A S S E S-----------------------------------
+
 class Comic {   //Exercici 1
     constructor(id, title, issueNumber, description, pageCount, thumbnail, price, creators, characters) {
         this.id = id;
@@ -87,7 +89,7 @@ class Favorites {    // Exercici 3
 
 }
 
-/* FUNCIONS */
+//----------------------------F U N C I O N S----------------------------------------
 
 function findComicById(list, idComic, i=0){    //Exercici 4
 
@@ -124,6 +126,16 @@ function copyFavorites(collection) {   //Exercici 7
     const savedList = new Favorites;
     savedList = [...collection.favorites];
     return savedList;
+}
+
+function getAffordableComicTitles(collection, cash){ // Exercici 8
+    if (cash === 0){
+        console.log("Your cash is not enought to buy anything");
+        return null;
+    }
+
+    return collection.favorites.filter(com => com.price <= cash).map(com => com.title);
+
 }
 
 
@@ -190,3 +202,5 @@ patata.showFavorites();
 
 console.log(patata.favorites);
 console.log(calculateAveragePrice(patata));
+
+console.log(getAffordableComicTitles(patata,15));
