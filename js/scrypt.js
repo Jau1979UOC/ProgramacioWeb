@@ -98,11 +98,9 @@ function findComicById(list, idComic, i=0){    //Exercici 4
     }
 
     if (list.favorites[i].id === idComic){
-        console.log("Punt2");
         return list.favorites[i];
     } 
    
-    console.log("Punt3");
     return findComicById(list, idComic, i+1);
 }
 
@@ -138,8 +136,7 @@ function getAffordableComicTitles(collection, cash){ // Exercici 8
 
 }
 
-
-/* CODI EXEMPLE*/
+//-------------------------C A S O S------------E X E M P L E -----------------------------------------
 
 const ruta = new Thumbnail("https://www.uoc.edu/comic_1_spiderman","jpg");
 const ruta2 = new Thumbnail("https://www.uoc.edu/foto_spiderman", "png");
@@ -189,18 +186,41 @@ const hero1 = new Hero(
     comic1 
 );
 
-// COMPROVACIÓ DE MÉTODES I DADES PER CONSOLE.LOG
+//---------------------- C O M P R O V A C I Ó  D E  M É T O D E S---------------------------------
 
-
-
-
-
-
-let patata = new Favorites();
-addMultipleFavorites(patata, comic1, comic2, comic3);
-patata.showFavorites();
-
-console.log(patata.favorites);
-console.log(calculateAveragePrice(patata));
-
-console.log(getAffordableComicTitles(patata,15));
+console.log("Exercici 1: Obtencio de la URL del thumbnail");
+console.log(comic1.getThumbnailURL());
+console.log("--------------------------------------------------------------");
+console.log("Exercici 2: Obtencio d'un heroi i el seu thumbnail");
+console.log(hero1);
+console.log(hero1.getThumbnailURL());
+console.log("--------------------------------------------------------------");
+console.log("Exercici 3: Creacio llista favorits");
+let llistaFav = new Favorites();
+llistaFav.addFavorite(comic1);
+console.log("Afegim comic a llista favorits");
+console.log(llistaFav.favorites);
+llistaFav.addFavorite(comic2);
+llistaFav.removeFavorite(1);
+console.log("Afegim segon comic i elimienm el primer");
+llistaFav.showFavorites();
+console.log("Afegim primer i tercer comic i fem còpia de la llista");
+llistaFav.addMultipleFavorites(comic1, comic3);
+let copiaLlista = new Favorites();
+copiaLlista = llistaFav.copyFavorites();
+console.log(copiaLlista);
+console.log("--------------------------------------------------------------");
+console.log("Exercici 4: Trobar un comic de la llista anterior amb el id 24");
+console.log(findComicById(llistaFav, 24));
+console.log("--------------------------------------------------------------");
+console.log("Exercici 5: Calcular el preu mitja de la coleccio");
+console.log(calculateAveragePrice(llistaFav) + " euros");
+console.log("--------------------------------------------------------------");
+console.log("Exercici 6 i 7: Similars al mètode de la classe Favorites");
+let llistaFav2 = new Favorites();
+addMultipleFavorites(llistaFav2, comic1, comic2, comic3);
+llistaFav2.showFavorites();
+console.log("--------------------------------------------------------------");
+console.log("Exercici 8: Filtrar volums de llista anterior i preu de 10 euros");
+console.log(getAffordableComicTitles(llistaFav2,10));
+console.log("--------------------------------------------------------------");
