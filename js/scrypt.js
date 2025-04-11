@@ -120,6 +120,12 @@ function addMultipleFavorites(favoriteList, ...comics){  //Exercici 6
     comics.forEach(com => favoriteList.addFavorite(com));
 }
 
+function copyFavorites(collection) {   //Exercici 7
+    const savedList = new Favorites;
+    savedList = [...collection.favorites];
+    return savedList;
+}
+
 
 /* CODI EXEMPLE*/
 
