@@ -1,4 +1,4 @@
-class Comic {
+class Comic {   //Exercici 1
     constructor(id, title, issueNumber, description, pageCount, thumbnail, price, creators, characters) {
         this.id = id;
         this.title = title;
@@ -28,7 +28,7 @@ class Thumbnail {
     }
 }
 
-class Hero {
+class Hero {   //Exercici 2
     constructor(idHero, name, description, modifiedDate, thumbnail, resourceURI, appears){
         this.idHero = idHero;
         this.name = name;
@@ -44,7 +44,7 @@ class Hero {
     }
 }
 
-class Favorites {
+class Favorites {    // Exercici 3
     constructor(){
         this.favorites = [];
     }
@@ -86,6 +86,36 @@ class Favorites {
     }
 
 }
+
+/* FUNCIONS */
+
+function findComicById(list, idComic, i=0){    //Exercici 4
+
+    if(i >= list.length){
+        return null;
+    }
+
+    if (list.favorites[i].id === idComic){
+        console.log("Punt2");
+        return list.favorites[i];
+    } 
+   
+    console.log("Punt3");
+    return findComicById(list, idComic, i+1);
+}
+
+function calculateAveragePrice(collection){   //Exercici 5
+
+    if (collection.length === 0){
+        return 0;
+    }
+
+    let sumValue = collection.favorites.reduce((sum,com) => sum + com.price, 0);
+    
+    return (sumValue/collection.favorites.length);
+
+}
+
 
 /* CODI EXEMPLE*/
 
@@ -136,8 +166,9 @@ const hero1 = new Hero(
     comic1 
 );
 
-let lista = new Favorites();
-lista.addMultipleFavorites(comic1,comic2,comic3);
-lista.showFavorites();
-console.log(lista.length);
+let patata = new Favorites();
+patata.addMultipleFavorites(comic1,comic2,comic3);
+patata.showFavorites();
 
+console.log(patata.favorites);
+console.log(calculateAveragePrice(patata));
