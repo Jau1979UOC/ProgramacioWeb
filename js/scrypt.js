@@ -116,12 +116,17 @@ function calculateAveragePrice(collection){   //Exercici 5
 
 }
 
+function addMultipleFavorites(favoriteList, ...comics){  //Exercici 6
+    comics.forEach(com => favoriteList.addFavorite(com));
+}
+
 
 /* CODI EXEMPLE*/
 
 const ruta = new Thumbnail("https://www.uoc.edu/comic_1_spiderman","jpg");
 const ruta2 = new Thumbnail("https://www.uoc.edu/foto_spiderman", "png");
 const ruta3 = new Thumbnail("https://www.uoc.edu/comic_1_hulk","jpg");
+
 const comic1 = new Comic(
     1,
     "Les aventures de l'increible Spiderman",
@@ -166,8 +171,15 @@ const hero1 = new Hero(
     comic1 
 );
 
+// COMPROVACIÓ DE MÉTODES I DADES PER CONSOLE.LOG
+
+
+
+
+
+
 let patata = new Favorites();
-patata.addMultipleFavorites(comic1,comic2,comic3);
+addMultipleFavorites(patata, comic1, comic2, comic3);
 patata.showFavorites();
 
 console.log(patata.favorites);
